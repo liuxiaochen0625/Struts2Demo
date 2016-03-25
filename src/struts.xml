@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+    <struts>
+    	<package name="demo" extends="struts-default" namespace="">
+    		<action name="login" class="demo.action.LoginAction">
+    			<!-- 定义input的逻辑视图名，对应loginForm.jsp页面 -->
+				<result name="input">/WEB-INF/content/loginForm.jsp</result>
+				<!-- 定义处理结果和视图资源之间映射关系 -->
+				<result name="error">/WEB-INF/content/error.jsp</result>
+				<result name="success">/WEB-INF/content/welcome.jsp</result>
+    		</action>
+    		<action name="getBooks" class="demo.action.GetBooksAction">
+    			<!-- 如果处理结果返回login，进入login.jsp页面 -->
+				<result name="login">/WEB-INF/content/login.jsp</result>
+				<!-- 如果处理结果返回success，进入showBook.jsp页面 -->
+				<result name="success">/WEB-INF/content/showBook.jsp</result> 
+    		</action>
+    		<action name="*">
+    			<result>/WEB-INF/content/{1}.jsp</result>
+    		</action>
+    	</package>
+    </struts>
